@@ -1,36 +1,71 @@
 .button {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 24px;
+    gap: 10px;
+    cursor: pointer;
 }
 
 .disabled {
+    opacity: 0.5;
+    color: rgba(0, 46, 92, 1);
+    background-color: rgba(0, 77, 153, 1);
+    cursor: default;
 }
 
 .secondary {
+    border: 1px solid rgba(0, 102, 204, 1);
+    color: rgba(0, 102, 204, 1);
+    background-color: white;
 }
 
 .default {
+    color: white;
+    background-color: rgba(0, 102, 204, 1);
 }
 
 .red {
+    color: white;
+    background-color: rgba(204, 20, 57, 1);
 }
 
+
+
 .default:hover {
+    background-color: rgba(0, 128, 255, 1);
 }
 
 .red:hover {
+    background-color: rgba(255, 26, 71, 1);
 }
 
 .secondary:hover {
+    background-color: rgba(229, 240, 250, 1);
 }
+
+
 
 
 .default:active {
+    background-color: rgba(0, 89, 178, 1);
 }
 
 .secondary:active {
+    background-color: rgba(201, 229, 255, 1);
 }
 
 .red:active {
+    background-color: rgba(178, 18, 50, 1);
 }
 
+
+
+
 .button:disabled {
+    opacity: 0.5;
+    cursor: default;
 }
