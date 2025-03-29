@@ -41,7 +41,7 @@ function Pages() {
 
                 {/*роут для несуществующей страницы должен отрисовать <Error404 />*/}
                 <Route 
-                    path='/error-404'
+                    path='*'
                     element={<Error404/>}
                 ></Route> 
             </Routes>
