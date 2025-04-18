@@ -1,2 +1,5 @@
 .container {
+    display: flex;
+    gap: 127px;
+    margin: 32px 0 200px 70px;
 }
