@@ -7,7 +7,7 @@ import User from './User'
 
 /*
 * 1 - дописать типы и логику (сортировка по имени, фильтрация по совершеннолетию) homeWorkReducer, проверить тестом
-* 2 - дописать компоненту User
+* 2 + дописать компоненту User
 * 3 - сделать стили в соответствии с дизайном
 * */
 
@@ -32,6 +32,7 @@ const HW8 = () => {
     const [currentSort, setCurrentSort] = useState('')
 
     const finalPeople = people.map((u: UserType) => <User key={u._id} u={u}/>)
+    console.log(initialPeople)
 
     const sortUp = () => {
         setPeople(
@@ -43,7 +44,7 @@ const HW8 = () => {
     const sortDown = () => {
         setPeople(
             homeWorkReducer(initialPeople, {type: 'sort', payload: 'down'})
-        ) // в обратном порядке a.name < b.name}
+        ) // в обратном порядке a.name < b.name
         setCurrentSort('down')
     }
     const check18 = () => {
