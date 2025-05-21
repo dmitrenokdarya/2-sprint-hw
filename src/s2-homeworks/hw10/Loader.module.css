@@ -1,3 +1,21 @@
 .loader {
-    /*свг и/или анимация*/
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin: 3px 0 0 60px;
+}
+
+.loader img {
+    animation: rotate-clockwise 1500ms linear infinite;
+}
+
+
+@keyframes rotate-clockwise {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
