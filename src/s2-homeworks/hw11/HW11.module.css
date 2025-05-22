@@ -1,8 +1,24 @@
 .container {
+    margin: 69px 0 189px 0;
 }
 
 .wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.wrapper:first-child {
+    margin-bottom: 40px;
 }
 
 .number {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    width: 30px;
+}
+
+.number:last-child {
+    margin-left: 15px;
 }
