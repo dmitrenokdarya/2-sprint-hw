@@ -37,7 +37,7 @@ const SuperSelect: React.FC<SuperSelectPropsType> = ({
 
     const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
         // делают студенты
-        const newValue = e.currentTarget.value  
+        const newValue = Number(e.currentTarget.value)  
         onChangeOption?.(newValue)
     }
 
