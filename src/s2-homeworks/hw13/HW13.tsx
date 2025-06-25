@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import s2 from '../../s1-main/App.module.css'
 import s from './HW13.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
@@ -9,9 +9,9 @@ import error500 from './images/500.svg'
 import errorUnknown from './images/error.svg'
 
 /*
-* 1 - дописать функцию send
-* 2 - дизэйблить кнопки пока идёт запрос
-* 3 - сделать стили в соответствии с дизайном
+* 1 + дописать функцию send
+* 2 + дизэйблить кнопки пока идёт запрос
+* 3 + сделать стили в соответствии с дизайном
 * */
 
 const HW13 = () => {
@@ -32,16 +32,34 @@ const HW13 = () => {
         setInfo('...loading')
 
         axios
-            .post(url, {success: x})
+            .post(url, { success: x })
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
+                setText(`...всё ок) Код 200 - обычно означает что скорее всего всё ок)`)
+                setInfo('')
                 // дописать
-
             })
             .catch((e) => {
+                if (e.response.status === 500) {
+                    setCode('Ошибка 500!')
+                    setImage(error500)
+                    setText(`Имитация ошибки на сервере ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)`)
+                    setInfo('')
+                }
+                else if (e.response.status === 400) {
+                    setCode('Ошибка 400!')
+                    setImage(error400)
+                    setText(`Ты не отправил success в body вообще! Ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!`)
+                    setInfo('')
+                }
+                else {
+                    setCode('Error!')
+                    setImage(errorUnknown)
+                    setText('Network Error\nAxiosError')
+                    setInfo('')
+                }
                 // дописать
-
             })
     }
 
@@ -55,7 +73,8 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
-                        // дописать
+                        disabled={info === '' ? false : true}
+                    // дописать
 
                     >
                         Send true
@@ -64,7 +83,8 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
-                        // дописать
+                        disabled={info === '' ? false : true}
+                    // дописать
 
                     >
                         Send false
@@ -73,7 +93,8 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        // дописать
+                        disabled={info === '' ? false : true}
+                    // дописать
 
                     >
                         Send undefined
@@ -82,7 +103,8 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
-                        // дописать
+                        disabled={info === '' ? false : true}
+                    // дописать
 
                     >
                         Send null
@@ -91,7 +113,7 @@ const HW13 = () => {
 
                 <div className={s.responseContainer}>
                     <div className={s.imageContainer}>
-                        {image && <img src={image} className={s.image} alt="status"/>}
+                        {image && <img src={image} className={s.image} alt="status" />}
                     </div>
 
                     <div className={s.textContainer}>

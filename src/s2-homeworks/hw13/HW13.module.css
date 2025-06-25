@@ -1,22 +1,38 @@
 .buttonsContainer {
+    margin: 33px 0 30px 0;
+    display: flex;
+    gap: 25px;
 }
 
 .responseContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 95px;
+    min-height: 343px;
 }
 
 .imageContainer {
+    font-family: Montserrat;
+    font-weight: 500;
 }
 
-.image {
-}
+.image {}
 
-.textContainer{
+.textContainer {
+    
 }
 
 .code {
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
 .text {
+    font-size: 16px;
+    white-space: pre-wrap;
 }
+
 .info {
+    font-size: 30px;
 }
