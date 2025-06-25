@@ -19,13 +19,15 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [disabled, setDisabled] = useState(false)
 
     const send = (x?: boolean | null) => () => {
         const url =
             x === null
                 ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
                 : 'https://samurai.it-incubator.io/api/3.0/homework/test'
-
+        
+        setDisabled(true)
         setCode('')
         setImage('')
         setText('')
@@ -34,6 +36,7 @@ const HW13 = () => {
         axios
             .post(url, { success: x })
             .then((res) => {
+                setDisabled(false)
                 setCode('Код 200!')
                 setImage(success200)
                 setText(`...всё ок) Код 200 - обычно означает что скорее всего всё ок)`)
@@ -42,22 +45,25 @@ const HW13 = () => {
             })
             .catch((e) => {
                 if (e.response.status === 500) {
+                    setDisabled(false)
                     setCode('Ошибка 500!')
                     setImage(error500)
-                    setText(`Имитация ошибки на сервере ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)`)
-                    setInfo('')
+                    setText(`эмитация ошибки на сервере `)
+                    setInfo('ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)')
                 }
                 else if (e.response.status === 400) {
+                    setDisabled(false)
                     setCode('Ошибка 400!')
                     setImage(error400)
-                    setText(`Ты не отправил success в body вообще! Ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!`)
-                    setInfo('')
+                    setText(`Ты не отправил success в body вообще!`)
+                    setInfo('Ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!')
                 }
                 else {
+                    setDisabled(false)
                     setCode('Error!')
                     setImage(errorUnknown)
-                    setText('Network Error\nAxiosError')
-                    setInfo('')
+                    setText('Network Error')
+                    setInfo('Error')
                 }
                 // дописать
             })
@@ -73,7 +79,7 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
-                        disabled={info === '' ? false : true}
+                        disabled={disabled}
                     // дописать
 
                     >
@@ -83,7 +89,7 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
-                        disabled={info === '' ? false : true}
+                        disabled={disabled}
                     // дописать
 
                     >
@@ -93,7 +99,7 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        disabled={info === '' ? false : true}
+                        disabled={disabled}
                     // дописать
 
                     >
@@ -103,7 +109,7 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
-                        disabled={info === '' ? false : true}
+                        disabled={disabled}
                     // дописать
 
                     >
