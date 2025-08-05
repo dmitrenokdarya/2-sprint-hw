@@ -1,11 +1,27 @@
 .pagination {
     display: flex;
+    align-items: center;
+    margin: 32px 0 36px 0;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(13, 11, 12, 1);
 }
 
 .text1 {
+    margin: 0 10px 0 21px;
+}
 
+.select {
+    width: 39px;
+    height: 24px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(13, 11, 12, 1);
+    text-align: center;
 }
 
 .text2 {
-
+    margin-left: 6px;
 }
